@@ -1,0 +1,10 @@
+# Factory.ai monitor template
+version: '1.0'
+monitor:
+  name: afi-agent-health
+  interval: 5m
+  actions:
+    - name: checkSentryAlerts
+      run: ts-node ops/sentryHook.ts
+    - name: pushToDataDog
+      run: curl -X POST https://api.datadoghq.com/agent_health

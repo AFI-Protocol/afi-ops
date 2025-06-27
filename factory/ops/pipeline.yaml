@@ -1,0 +1,11 @@
+# Factory.ai deployment pipeline for AFI Ops
+version: '1.0'
+tasks:
+  - name: Run config hash
+    run: ts-node ops/config-hash.ts
+
+  - name: Report version
+    run: ts-node ops/agent-version.ts
+
+  - name: Init Sentry
+    run: ts-node ops/sentryHook.ts
